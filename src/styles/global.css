@@ -143,6 +143,31 @@ html.gsap .statement-line em {
 	color: var(--color-gold);
 }
 
+@media (max-width: 767px) {
+	.statement {
+		min-height: 320svh;
+	}
+
+	.statement > div {
+		position: sticky;
+		top: 0;
+	}
+
+	.statement__stage {
+		min-height: 28rem;
+		position: relative;
+	}
+
+	html.gsap .statement-line {
+		inset-inline: 0;
+		margin-top: 0;
+		position: absolute;
+		top: 50%;
+		translate: 0 -50%;
+		width: 100%;
+	}
+}
+
 /* Mobile sticky CTA: hidden until app.js switches it on after the hero. */
 [data-mobile-cta] {
 	transform: translateY(150%);

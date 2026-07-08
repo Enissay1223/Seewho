@@ -44,7 +44,61 @@ if (!reduceMotion) {
 	// ---------- Statement: pinned, lines light up as you scroll ----------
 	const statementLines = gsap.utils.toArray(".statement-line");
 	if (statementLines.length) {
-		gsap.matchMedia().add("(min-width: 768px)", () => {
+		const statementSection = document.querySelector("#these");
+		const mmStatement = gsap.matchMedia();
+
+		mmStatement.add("(max-width: 767px)", () => {
+			if (!statementSection) return;
+
+			const renderMobileStatement = (progress) => {
+				const position = progress * statementLines.length;
+
+				statementLines.forEach((line, index) => {
+					const local = position - index;
+					const isLast = index === statementLines.length - 1;
+					let opacity = 0;
+					let y = 36;
+					let blur = 10;
+
+					if (local >= 0 && local < 0.35) {
+						const t = local / 0.35;
+						opacity = t;
+						y = 36 * (1 - t);
+						blur = 10 * (1 - t);
+					} else if (local >= 0.35 && (isLast || local < 0.9)) {
+						opacity = 1;
+						y = 0;
+						blur = 0;
+					} else if (!isLast && local >= 0.9 && local < 1.18) {
+						const t = (local - 0.9) / 0.28;
+						opacity = 1 - t;
+						y = -24 * t;
+						blur = 8 * t;
+					}
+
+					gsap.set(line, { opacity, y, filter: `blur(${blur}px)` });
+				});
+			};
+
+			const mobileTrigger = ScrollTrigger.create({
+				trigger: statementSection,
+				start: "top 65%",
+				end: "bottom bottom",
+				scrub: true,
+				invalidateOnRefresh: true,
+				onUpdate: (self) => renderMobileStatement(self.progress),
+				onRefresh: (self) => renderMobileStatement(self.progress),
+			});
+
+			renderMobileStatement(0);
+
+			return () => {
+				mobileTrigger.kill();
+				gsap.set(statementLines, { clearProps: "opacity,y,filter" });
+			};
+		});
+
+		mmStatement.add("(min-width: 768px)", () => {
 			const statementTimeline = gsap.timeline({
 				scrollTrigger: {
 					trigger: "#these",
