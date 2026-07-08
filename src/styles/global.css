@@ -6,7 +6,7 @@
 	font-style: normal;
 	font-weight: 300 900;
 	font-display: swap;
-	src: url("/fonts/figtree-variable.woff2") format("woff2-variations");
+	src: url("/Seewho/fonts/figtree-variable.woff2") format("woff2-variations");
 }
 
 @font-face {
@@ -14,7 +14,7 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url("/fonts/instrument-serif-400.woff2") format("woff2");
+	src: url("/Seewho/fonts/instrument-serif-400.woff2") format("woff2");
 }
 
 @font-face {
@@ -22,7 +22,7 @@
 	font-style: italic;
 	font-weight: 400;
 	font-display: swap;
-	src: url("/fonts/instrument-serif-400-italic.woff2") format("woff2");
+	src: url("/Seewho/fonts/instrument-serif-400-italic.woff2") format("woff2");
 }
 
 @font-face {
@@ -30,7 +30,7 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url("/fonts/ibm-plex-mono-400.woff2") format("woff2");
+	src: url("/Seewho/fonts/ibm-plex-mono-400.woff2") format("woff2");
 }
 
 @font-face {
@@ -38,7 +38,7 @@
 	font-style: normal;
 	font-weight: 500;
 	font-display: swap;
-	src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2");
+	src: url("/Seewho/fonts/ibm-plex-mono-500.woff2") format("woff2");
 }
 
 @theme {

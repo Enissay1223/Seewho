@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { withBase } from "../utils/paths";
 
 interface Props {
 	title: string;
@@ -11,8 +12,10 @@ interface Props {
 }
 
 const { title, description, path = Astro.url.pathname, noindex = false } = Astro.props;
-const canonicalURL = new URL(path, Astro.site);
-const ogImageURL = new URL("/assets/og.png", Astro.site);
+const basePath = import.meta.env.BASE_URL;
+const canonicalPath = path.startsWith(basePath) ? path : withBase(path);
+const canonicalURL = new URL(canonicalPath, Astro.site);
+const ogImageURL = new URL(withBase("/assets/og.png"), Astro.site);
 
 const jsonLd = {
 	"@context": "https://schema.org",
@@ -20,7 +23,7 @@ const jsonLd = {
 	name: "Seewho",
 	description:
 		"Agentur für digitale Sichtbarkeit: Webseiten, Google-Sichtbarkeit und Bewertungs-Systeme für inhabergeführte Unternehmen.",
-	url: Astro.site?.toString(),
+	url: new URL(basePath, Astro.site).toString(),
 	areaServed: ["Deutschland", "NRW"],
 	image: ogImageURL.toString(),
 };
@@ -31,7 +34,8 @@ const jsonLd = {
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<base href={withBase("/")} />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 
 		<title>{title}</title>
@@ -61,28 +65,28 @@ const jsonLd = {
 		<!-- Preload critical fonts used above the fold. -->
 		<link
 			rel="preload"
-			href="/fonts/figtree-variable.woff2"
+			href="fonts/figtree-variable.woff2"
 			as="font"
 			type="font/woff2"
 			crossorigin
 		/>
 		<link
 			rel="preload"
-			href="/fonts/instrument-serif-400.woff2"
+			href="fonts/instrument-serif-400.woff2"
 			as="font"
 			type="font/woff2"
 			crossorigin
 		/>
 		<link
 			rel="preload"
-			href="/fonts/instrument-serif-400-italic.woff2"
+			href="fonts/instrument-serif-400-italic.woff2"
 			as="font"
 			type="font/woff2"
 			crossorigin
 		/>
 		<link
 			rel="preload"
-			href="/fonts/ibm-plex-mono-400.woff2"
+			href="fonts/ibm-plex-mono-400.woff2"
 			as="font"
 			type="font/woff2"
 			crossorigin
@@ -92,7 +96,7 @@ const jsonLd = {
 	</head>
 	<body class="bg-nacht text-kreide antialiased">
 		<a
-			href="#main"
+			href={`${canonicalPath}#main`}
 			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[70] focus:rounded-lg focus:bg-gold focus:px-4 focus:py-2 focus:text-white"
 		>
 			Zum Inhalt springen

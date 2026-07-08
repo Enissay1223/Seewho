@@ -4,12 +4,12 @@ interface Props {
 	href?: string;
 }
 
-const { class: className = "", href = "/#main" } = Astro.props;
+const { class: className = "", href = "#main" } = Astro.props;
 ---
 
 <a href={href} class={`group block ${className}`} aria-label="Seewho — Startseite">
 	<img
-		src="/assets/branding/seewho-logo-clean.png"
+		src="assets/branding/seewho-logo-clean.png"
 		alt="Seewho"
 		width="1880"
 		height="680"
