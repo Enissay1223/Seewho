@@ -55,7 +55,6 @@ if (!reduceMotion) {
 
 				statementLines.forEach((line, index) => {
 					const local = position - index;
-					const isLast = index === statementLines.length - 1;
 					let opacity = 0;
 					let y = 36;
 					let blur = 10;
@@ -65,15 +64,10 @@ if (!reduceMotion) {
 						opacity = t;
 						y = 36 * (1 - t);
 						blur = 10 * (1 - t);
-					} else if (local >= 0.35 && (isLast || local < 0.9)) {
+					} else if (local >= 0.35) {
 						opacity = 1;
 						y = 0;
 						blur = 0;
-					} else if (!isLast && local >= 0.9 && local < 1.18) {
-						const t = (local - 0.9) / 0.28;
-						opacity = 1 - t;
-						y = -24 * t;
-						blur = 8 * t;
 					}
 
 					gsap.set(line, { opacity, y, filter: `blur(${blur}px)` });

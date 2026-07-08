@@ -154,16 +154,13 @@ html.gsap .statement-line em {
 	}
 
 	.statement__stage {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		min-height: 28rem;
-		position: relative;
 	}
 
 	html.gsap .statement-line {
-		inset-inline: 0;
-		margin-top: 0;
-		position: absolute;
-		top: 50%;
-		translate: 0 -50%;
 		width: 100%;
 	}
 }
