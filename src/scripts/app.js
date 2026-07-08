@@ -44,57 +44,7 @@ if (!reduceMotion) {
 	// ---------- Statement: pinned, lines light up as you scroll ----------
 	const statementLines = gsap.utils.toArray(".statement-line");
 	if (statementLines.length) {
-		const mmStatement = gsap.matchMedia();
-
-		mmStatement.add("(max-width: 767px)", () => {
-			const statementTimeline = gsap.timeline({
-				scrollTrigger: {
-					trigger: "#these",
-					start: "top top",
-					end: "+=260%",
-					pin: true,
-					scrub: true,
-					anticipatePin: 1,
-				},
-			});
-
-			statementLines.forEach((line, index) => {
-				statementTimeline
-					.to(
-						line,
-						{
-							opacity: 1,
-							y: 0,
-							filter: "blur(0px)",
-							duration: 0.55,
-							ease: "power2.out",
-						},
-						index,
-					)
-					.to(line, { opacity: 1, duration: 0.35 }, index + 0.55);
-
-				if (index < statementLines.length - 1) {
-					statementTimeline.to(
-						line,
-						{
-							opacity: 0,
-							y: -24,
-							filter: "blur(8px)",
-							duration: 0.35,
-							ease: "power2.in",
-						},
-						index + 0.9,
-					);
-				}
-			});
-
-			return () => {
-				statementTimeline.scrollTrigger?.kill();
-				statementTimeline.kill();
-			};
-		});
-
-		mmStatement.add("(min-width: 768px)", () => {
+		gsap.matchMedia().add("(min-width: 768px)", () => {
 			const statementTimeline = gsap.timeline({
 				scrollTrigger: {
 					trigger: "#these",
