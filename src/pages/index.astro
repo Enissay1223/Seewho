@@ -1,0 +1,547 @@
+---
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+import MockupLaptop from "../components/MockupLaptop.astro";
+import MockupPhone from "../components/MockupPhone.astro";
+
+const verticals = [
+	"Praxen",
+	"Studios",
+	"Handwerk",
+	"Beratung",
+	"Gastronomie",
+	"Kanzleien",
+	"Immobilien",
+	"Services",
+];
+
+const services = [
+	{
+		n: "01",
+		title: "Webseite",
+		claim: "Ein Auftritt, der hochwertig wirkt und schnell Vertrauen aufbaut.",
+		items: [
+			"Maßgeschneidert, kein Baukasten",
+			"Saubere Struktur für Angebot, Vertrauen und Anfrage",
+			"Schnell, mobil stark und technisch belastbar",
+		],
+	},
+	{
+		n: "02",
+		title: "Sichtbarkeit",
+		claim: "Gefunden werden, wenn Menschen aktiv nach einem Anbieter suchen.",
+		items: [
+			"Google-Unternehmensprofil, das arbeitet",
+			"SEO für relevante Suchbegriffe",
+			"Monatlicher Klartext-Report",
+		],
+	},
+	{
+		n: "03",
+		title: "Bewertungen",
+		claim: "Ihr Ruf — systematisch aufgebaut.",
+		items: [
+			"Bewertungs-System statt Zufall",
+			"Automatische Nachfass-Strecken",
+			"Antworten im richtigen Ton",
+		],
+	},
+	{
+		n: "04",
+		title: "Automatisierung",
+		claim: "Anfragen und Nachfassprozesse laufen ruhiger und verbindlicher.",
+		items: [
+			"Terminerinnerungen & Recall",
+			"Smarte Anfrage-Strecken",
+			"Weniger Reibung im Alltag",
+		],
+	},
+];
+
+const steps = [
+	{
+		n: "01",
+		title: "Analyse",
+		text: "20 Minuten, kostenlos. Danach wissen Sie, wo Sie stehen — schriftlich.",
+	},
+	{
+		n: "02",
+		title: "Strategie",
+		text: "Ein Plan mit Zahlen, Prioritäten und ehrlichen Erwartungen.",
+	},
+	{
+		n: "03",
+		title: "Umsetzung",
+		text: "Webseite, Profil, Bewertungen — ein System, das ineinandergreift.",
+	},
+	{
+		n: "04",
+		title: "Betreuung",
+		text: "Monatlicher Klartext-Report. Monatlich kündbar.",
+	},
+];
+---
+
+<Base
+	title="Seewho — Premium-Webseiten und digitale Sichtbarkeit"
+	description="Webseiten, Google-Sichtbarkeit und Bewertungs-Systeme für inhabergeführte Unternehmen — hochwertig, messbar und ohne Agentur-Theater."
+>
+	<header class="absolute inset-x-0 top-0 z-30">
+		<div class="mx-auto flex max-w-content items-center justify-between px-6 py-6">
+			<Logo href="#main" />
+			<div class="flex items-center gap-6">
+				<nav class="hidden items-center gap-6 font-mono text-[11px] tracking-widest text-kreide/70 uppercase lg:flex" aria-label="Hauptnavigation">
+					<a href="#leistungen" class="transition-colors hover:text-gold">Leistungen</a>
+					<a href="#prozess" class="transition-colors hover:text-gold">Prozess</a>
+					<a href="#pakete" class="transition-colors hover:text-gold">Pakete</a>
+					<a href="#ueber-mich" class="transition-colors hover:text-gold">Über mich</a>
+				</nav>
+				<a
+					href="#kontakt"
+					class="hidden rounded-full border border-kreide/15 bg-kohle/70 px-5 py-2 font-mono text-xs tracking-widest text-kreide/90 uppercase shadow-[0_18px_45px_-35px_rgba(65,49,35,0.45)] transition-all hover:border-gold hover:text-gold active:scale-[0.98] sm:inline-block"
+				>
+					Analyse anfordern
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main id="main">
+		<!-- ===================== HERO ===================== -->
+		<section class="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden pt-28">
+			<div
+				class="mx-auto grid w-full max-w-content items-center gap-12 px-6 pb-12 md:grid-cols-[0.9fr_1.1fr] md:gap-10"
+			>
+				<div>
+					<p
+						class="font-mono text-xs tracking-[0.3em] text-kreide/70 uppercase sm:text-sm"
+						data-hero-eyebrow
+					>
+						Premium-Webseiten · Sichtbarkeit · Systeme
+					</p>
+					<div class="mt-6 max-w-[30rem]">
+						<div class="overflow-hidden">
+							<img
+								src="/assets/branding/seewho-logo-clean.png"
+								alt="Seewho"
+								width="1880"
+								height="680"
+								class="block w-full max-w-[19rem] opacity-[0.97] mix-blend-multiply sm:max-w-[24rem] lg:max-w-[28rem]"
+								data-hero-line
+							/>
+						</div>
+						<div class="mt-5 h-px w-24 bg-gold/55" data-hero-line></div>
+					</div>
+					<h1 class="mt-6 font-display text-[clamp(3.1rem,8vw,6rem)] leading-[0.98] tracking-tight">
+						<span class="block overflow-hidden"
+							><span class="block" data-hero-line>Digitale Auftritte,</span></span
+						>
+						<span class="block overflow-hidden"
+							><span class="block" data-hero-line><em class="text-gold">die wirken.</em></span
+							></span
+						>
+					</h1>
+					<p class="mt-7 max-w-[46ch] text-lg text-kreide/75" data-hero-sub>
+						Wir bauen helle, hochwertige Webseiten mit Sichtbarkeit, Bewertungen und
+						Automatisierung dahinter. Für Unternehmen, die online nicht nur vorhanden sein
+						wollen, sondern begehrenswert wirken müssen.
+					</p>
+					<div class="mt-9 flex flex-wrap items-center gap-6" data-hero-cta>
+						<a
+							href="#kontakt"
+							class="rounded-full bg-gold px-7 py-4 font-medium text-white shadow-[0_18px_50px_-22px_rgba(200,111,74,0.65)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
+						>
+							Kostenlose Sichtbarkeits-Analyse
+						</a>
+						<a
+							href="#leistungen"
+							class="font-mono text-sm tracking-widest text-kreide/70 uppercase transition-colors hover:text-gold"
+						>
+							Leistungen ↓
+						</a>
+					</div>
+				</div>
+
+				<figure class="relative overflow-hidden rounded-[2rem] border border-kreide/10 bg-kohle shadow-[0_42px_90px_-54px_rgba(65,49,35,0.5)]" data-hero-cta>
+					<img
+						src="/assets/generated/umkreis-human-consultation-hero.png"
+						alt="Beratungsgespräch an einem Tisch mit Laptop, Website-Entwurf und Notizen"
+						class="aspect-[16/10] h-full w-full object-cover"
+						width="1672"
+						height="941"
+						loading="eager"
+						fetchpriority="high"
+					/>
+					<figcaption class="absolute right-4 bottom-4 rounded-full border border-white/40 bg-white/75 px-4 py-2 font-mono text-[10px] tracking-[0.18em] text-kreide/70 uppercase shadow-[0_18px_44px_-30px_rgba(65,49,35,0.5)] backdrop-blur">
+						Webseite · Sichtbarkeit · Vertrauen
+					</figcaption>
+				</figure>
+			</div>
+
+			<!-- Verticals marquee -->
+			<p class="sr-only">
+				Für Praxen, Studios, Handwerk, Beratung, Gastronomie, Kanzleien, Immobilien und
+				Services.
+			</p>
+			<div class="marquee hairline border-y py-5" aria-hidden="true">
+				<div class="marquee__track">
+					{
+						[0, 1].map(() => (
+							<span class="flex shrink-0 items-center">
+								{verticals.map((v) => (
+									<span class="flex items-center font-mono text-sm tracking-[0.25em] text-kreide/50 uppercase">
+										<span class="px-6">{v}</span>
+										<span class="h-1.5 w-1.5 rounded-full bg-gold/60" />
+									</span>
+								))}
+							</span>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== STATEMENT (pinned scrub) ===================== -->
+		<section id="these" class="statement relative">
+			<div class="flex min-h-[100dvh] flex-col items-start justify-center px-6">
+				<div class="mx-auto w-full max-w-content">
+					<p class="statement-line font-display text-[clamp(2.1rem,6.5vw,4.6rem)] leading-[1.12]" style="--line-index: 0">
+						Wer online vergleicht, entscheidet schnell.
+					</p>
+					<p
+						class="statement-line mt-3 font-display text-[clamp(2.1rem,6.5vw,4.6rem)] leading-[1.12]"
+						style="--line-index: 1"
+					>
+						Der erste Eindruck muss warm, klar und hochwertig sein.
+					</p>
+					<p
+						class="statement-line mt-3 font-display text-[clamp(2.1rem,6.5vw,4.6rem)] leading-[1.12]"
+						style="--line-index: 2"
+					>
+						Wir bauen den Auftritt, der diese Entscheidung <em class="italic">leichter macht.</em>
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== LEISTUNGEN (horizontal scroll) ===================== -->
+		<section id="leistungen" data-hscroll class="scroll-mt-20 md:flex md:min-h-[100dvh] md:flex-col md:justify-center md:overflow-x-clip">
+			<div class="mx-auto w-full max-w-content px-6 pt-20 pb-10 md:pt-0">
+				<p class="font-mono text-xs tracking-[0.3em] text-kreide/70 uppercase">Leistungen</p>
+				<h2 class="mt-3 font-display text-4xl sm:text-5xl">
+					Vier Bausteine. <em class="text-gold">Ein hochwertiger Eindruck.</em>
+				</h2>
+			</div>
+
+			<div
+				data-hscroll-track
+				class="flex w-screen snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain px-6 pb-20 md:w-auto md:snap-none md:gap-8 md:overflow-visible md:px-[max(1.5rem,calc((100vw-1200px)/2))] md:pb-0"
+			>
+				{
+					services.map((s) => (
+						<article class="group w-[82vw] max-w-[400px] shrink-0 snap-center rounded-3xl border border-kreide/10 bg-kohle/88 p-8 shadow-[0_30px_80px_-58px_rgba(65,49,35,0.55)] transition-colors duration-300 hover:border-gold/50 md:w-[400px]">
+							<p class="font-display text-5xl leading-none text-gold/90">{s.n}</p>
+							<h3 class="mt-6 font-display text-3xl">{s.title}</h3>
+							<p class="mt-3 text-kreide/75">{s.claim}</p>
+							<ul class="mt-7 space-y-3 border-t border-kreide/10 pt-6">
+								{s.items.map((item) => (
+									<li class="flex items-baseline gap-3 text-[15px] text-kreide/80">
+										<span class="h-1.5 w-1.5 shrink-0 translate-y-[-2px] rounded-full bg-gold/70" />
+										{item}
+									</li>
+								))}
+							</ul>
+						</article>
+					))
+				}
+				<!-- End spacer so the last card can center on desktop pin -->
+				<div class="hidden w-[10vw] shrink-0 md:block" aria-hidden="true"></div>
+			</div>
+		</section>
+
+		<!-- ===================== PROZESS ===================== -->
+		<section id="prozess" data-prozess class="scroll-mt-20">
+			<div class="mx-auto grid max-w-content gap-12 px-6 py-24 md:grid-cols-[1fr_1.8fr] md:py-36">
+				<div>
+					<p class="font-mono text-xs tracking-[0.3em] text-kreide/70 uppercase" data-fade>
+						Der Weg
+					</p>
+					<h2 class="mt-3 font-display text-4xl sm:text-5xl" data-fade>
+						Klarer Ablauf. <br />Sichtbare <em class="text-gold">Verbesserung.</em>
+					</h2>
+					<figure class="mt-10 overflow-hidden rounded-[1.75rem] border border-kreide/10 bg-kohle shadow-[0_30px_80px_-58px_rgba(65,49,35,0.5)]" data-fade>
+						<img
+							src="/assets/generated/umkreis-human-strategy-table.png"
+							alt="Team plant eine Website-Strategie mit Layout-Ausdrucken, Tablet und Laptop"
+							class="aspect-[4/3] w-full object-cover"
+							width="1536"
+							height="1024"
+							loading="lazy"
+						/>
+					</figure>
+				</div>
+
+				<div class="relative pl-10 sm:pl-14">
+					<!-- track + gold progress line -->
+					<div class="absolute top-2 bottom-2 left-2 w-px bg-kreide/10" aria-hidden="true"></div>
+					<div
+						class="absolute top-2 bottom-2 left-2 w-px origin-top bg-gold"
+						data-prozess-line
+						aria-hidden="true"
+					>
+					</div>
+
+					<ol>
+						{
+							steps.map((step, i) => (
+								<li
+									class:list={[
+										"border-b border-kreide/10 py-8",
+										i === 0 && "border-t",
+									]}
+									data-fade
+								>
+									<div class="flex items-baseline gap-6">
+										<span class="font-mono text-sm text-gold">{step.n}</span>
+										<div>
+											<h3 class="font-display text-3xl">{step.title}</h3>
+											<p class="mt-2 max-w-[52ch] text-kreide/75">{step.text}</p>
+										</div>
+									</div>
+								</li>
+							))
+						}
+					</ol>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== NACHWEIS ===================== -->
+		<section id="arbeiten" class="scroll-mt-20 border-y border-kreide/10 bg-kohle/40">
+			<div class="mx-auto max-w-content px-6 py-24 md:py-36">
+				<p class="font-mono text-xs tracking-[0.3em] text-kreide/70 uppercase" data-fade>
+					Was Sie erhalten
+				</p>
+				<h2 class="mt-3 font-display text-4xl sm:text-5xl" data-fade>
+					Keine Blackbox. <em class="text-gold">Jeder Schritt wird belegt.</em>
+				</h2>
+				<p class="mt-6 max-w-[62ch] text-kreide/75" data-fade>
+					Solange Ergebnisse nicht belastbar dokumentiert sind, zeigen wir keine erfundenen Erfolgszahlen. Stattdessen sehen Sie genau, welche Nachweise Teil der Zusammenarbeit sind.
+				</p>
+
+				<figure class="mt-12 overflow-hidden rounded-[2rem] border border-kreide/10 bg-kohle shadow-[0_36px_90px_-62px_rgba(65,49,35,0.55)]" data-fade>
+					<img
+						src="/assets/generated/umkreis-human-local-business.png"
+						alt="Inhaberin eines lokalen Unternehmens prüft Website und Bewertungen am Arbeitsplatz"
+						class="aspect-[16/7] w-full object-cover"
+						width="1627"
+						height="967"
+						loading="lazy"
+					/>
+				</figure>
+
+				<div class="mt-16 grid gap-16 md:grid-cols-2 md:gap-10">
+					<article data-fade>
+						<p class="font-mono text-xs tracking-[0.25em] text-kreide/70 uppercase">
+							Nachweis 01 · Reputation
+						</p>
+						<div class="mt-8" data-parallax>
+							<MockupPhone />
+						</div>
+						<h3 class="mt-8 font-display text-3xl">Bewertungen werden messbar.</h3>
+						<p class="mt-3 max-w-[48ch] text-kreide/75">Sie sehen Anfragen, neue Bewertungen und Antwortraten im monatlichen Klartext-Report.</p>
+					</article>
+
+					<article data-fade>
+						<p class="font-mono text-xs tracking-[0.25em] text-kreide/70 uppercase">
+							Nachweis 02 · Sichtbarkeit
+						</p>
+						<div class="mt-8" data-parallax>
+							<MockupLaptop />
+						</div>
+						<h3 class="mt-8 font-display text-3xl">Fortschritt statt Bauchgefühl.</h3>
+						<p class="mt-3 max-w-[48ch] text-kreide/75">Ausgangslage, relevante Suchbegriffe und technische Kennzahlen werden vor und nach der Umsetzung dokumentiert.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== PAKETE ===================== -->
+		<section id="pakete" class="scroll-mt-20">
+			<div class="mx-auto max-w-content px-6 py-24 md:py-36">
+				<p class="font-mono text-xs tracking-[0.3em] text-kreide/70 uppercase" data-fade>
+					Pakete
+				</p>
+				<h2 class="mt-3 font-display text-4xl sm:text-5xl" data-fade>
+					Klar kalkuliert. <em class="text-gold">Monatlich kündbar.</em>
+				</h2>
+
+				<div class="mt-16 divide-y divide-kreide/10 border-y border-kreide/10">
+					<article class="grid gap-6 py-9 md:grid-cols-[0.65fr_0.8fr_1.4fr_auto] md:items-center" data-fade>
+						<p class="font-mono text-xs tracking-[0.25em] text-kreide/70 uppercase">Sichtbar</p>
+						<div><p class="font-mono text-3xl">ab <span data-count="2900">2.900</span> €</p><p class="mt-1 font-mono text-xs text-kreide/60">einmalig</p></div>
+						<ul class="space-y-1.5 text-[15px] text-kreide/80"><li>Individuelle Webseite</li><li>Technik, Datenschutz-Basis und Launch</li><li>Optionale Betreuung ab 200 €/Monat</li></ul>
+						<a href="#kontakt" class="font-mono text-xs tracking-widest text-gold uppercase hover:text-kreide">Anfragen →</a>
+					</article>
+
+					<article class="-mx-4 grid gap-6 rounded-3xl border border-gold/45 bg-kohle px-4 py-9 md:-mx-6 md:grid-cols-[0.65fr_0.8fr_1.4fr_auto] md:items-center md:px-6" data-fade>
+						<div><p class="font-mono text-xs tracking-[0.25em] text-gold uppercase">Wachstum</p><p class="mt-2 inline-block rounded-full bg-gold px-3 py-1 font-mono text-[10px] tracking-widest text-white uppercase">Empfohlen</p></div>
+						<div><p class="font-mono text-3xl">ab <span data-count="500">500</span> €</p><p class="mt-1 font-mono text-xs text-kreide/60">pro Monat · Einrichtung nach Befund</p></div>
+						<ul class="space-y-1.5 text-[15px] text-kreide/80"><li>SEO und Google-Profil</li><li>Bewertungs-System</li><li>Monatlicher Klartext-Report</li></ul>
+						<a href="#kontakt" class="font-mono text-xs tracking-widest text-gold uppercase hover:text-kreide">Anfragen →</a>
+					</article>
+
+					<article class="grid gap-6 py-9 md:grid-cols-[0.65fr_0.8fr_1.4fr_auto] md:items-center" data-fade>
+						<p class="font-mono text-xs tracking-[0.25em] text-kreide/70 uppercase">Autopilot</p>
+						<div><p class="font-mono text-3xl">ab <span data-count="800">800</span> €</p><p class="mt-1 font-mono text-xs text-kreide/60">pro Monat · Einrichtung nach Befund</p></div>
+						<ul class="space-y-1.5 text-[15px] text-kreide/80"><li>Alles aus Wachstum</li><li>Terminerinnerungen und Recall</li><li>Automatisierte Anfrage-Strecken</li></ul>
+						<a href="#kontakt" class="font-mono text-xs tracking-widest text-gold uppercase hover:text-kreide">Anfragen →</a>
+					</article>
+				</div>
+
+				<p class="mt-12 text-center font-mono text-sm text-kreide/60" data-fade>
+					Alle Preise zzgl. eventuell anfallender Umsatzsteuer. Betreuung ist monatlich kündbar.
+				</p>
+			</div>
+		</section>
+
+		<!-- ===================== ÜBER MICH ===================== -->
+		<section id="ueber-mich" class="scroll-mt-20 border-t border-kreide/10">
+			<div class="mx-auto max-w-content px-6 py-24 md:py-36">
+				<div class="grid gap-12 md:grid-cols-[240px_1fr] md:gap-20">
+					<aside class="relative flex aspect-[4/5] w-full max-w-[240px] flex-col justify-between overflow-hidden rounded-3xl border border-kreide/15 bg-kohle p-7" data-fade>
+						<div class="absolute -right-20 -bottom-20 h-56 w-56 rounded-full border border-gold/20" aria-hidden="true"></div>
+						<div class="absolute -right-10 -bottom-10 h-36 w-36 rounded-full border border-gold/35" aria-hidden="true"></div>
+						<p class="font-mono text-[11px] tracking-[0.25em] text-gold uppercase">Seewho / 01</p>
+						<p class="relative font-display text-3xl leading-tight">Systeme statt Show.</p>
+					</aside>
+
+					<div>
+						<p class="font-mono text-xs tracking-[0.3em] text-kreide/70 uppercase" data-fade>
+							Über mich
+						</p>
+						<h2 class="mt-3 font-display text-4xl sm:text-5xl" data-fade>
+							Warum ein IT-Delivery-Profi und keine Werbeagentur?
+						</h2>
+						<div class="mt-8 max-w-prose space-y-5 text-kreide/80" data-fade>
+							<p>
+								Zehn Jahre lang habe ich Rollouts und Transformationen für einen der größten
+								Handelskonzerne Europas geleitet. Projekte mit Hunderten Standorten, engen
+								Fristen und null Toleranz für Chaos.
+							</p>
+							<p>
+								Diese Erfahrung übertrage ich auf Ihr Unternehmen: Ich baue Systeme, keine
+								Einzelwebseiten. Was einmal läuft, soll auch in einem Jahr noch laufen — ohne
+								dass Sie sich darum kümmern müssen.
+							</p>
+							<p class="font-mono text-sm text-kreide/70">
+								Direkte Zusammenarbeit, klare Zuständigkeit und Ergebnisse, die Sie nachvollziehen können.
+							</p>
+						</div>
+
+						<dl class="mt-10 grid gap-6 border-t border-kreide/10 pt-8 sm:grid-cols-3" data-fade>
+							<div>
+								<dt class="font-mono text-[11px] tracking-[0.2em] text-kreide/60 uppercase">
+									Wer dahinter steht
+								</dt>
+								<dd class="mt-1.5 text-sm text-kreide/90">
+									10+ Jahre IT-Delivery im Konzernumfeld
+								</dd>
+							</div>
+							<div>
+								<dt class="font-mono text-[11px] tracking-[0.2em] text-kreide/60 uppercase">
+									Zertifiziert
+								</dt>
+								<dd class="mt-1.5 text-sm text-kreide/90">PRINCE2 & Scrum</dd>
+							</div>
+							<div>
+								<dt class="font-mono text-[11px] tracking-[0.2em] text-kreide/60 uppercase">
+									Arbeitsweise
+								</dt>
+								<dd class="mt-1.5 text-sm text-kreide/90">
+									Direkt, messbar und ohne Agentur-Umwege
+								</dd>
+							</div>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== KONTAKT ===================== -->
+		<section id="kontakt" class="scroll-mt-20 border-t border-kreide/10 bg-kohle/40">
+			<div class="mx-auto max-w-content px-6 py-24 md:py-36">
+				<h2 class="max-w-[16ch] font-display text-4xl sm:text-6xl" data-fade>
+					Sprechen wir über Ihre <em class="text-gold">Sichtbarkeit.</em>
+				</h2>
+				<p class="mt-6 max-w-prose text-kreide/75" data-fade>
+					20 Minuten, kostenlos, unverbindlich. Danach erhalten Sie eine schriftliche Analyse
+					Ihrer Online-Sichtbarkeit — ob wir zusammenarbeiten oder nicht.
+				</p>
+
+				<div class="mt-14 grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
+					<div class="rounded-3xl border border-gold/40 bg-kohle p-8 sm:p-10" data-fade>
+						<p class="font-mono text-[11px] tracking-[0.2em] text-gold uppercase">Direkter Kontakt</p>
+						<p class="mt-5 max-w-[34ch] font-display text-3xl sm:text-4xl">Schildern Sie kurz, wo Sie heute stehen.</p>
+						<a
+							href="mailto:kontakt@umkreis-agentur.de?subject=Kostenlose%20Sichtbarkeits-Analyse"
+							class="mt-8 inline-flex rounded-full bg-gold px-7 py-4 font-medium text-white transition-transform hover:scale-[1.03] active:scale-[0.98]"
+						>
+							Analyse per E-Mail anfragen
+						</a>
+						<p class="mt-5 font-mono text-xs text-kreide/65">kontakt@umkreis-agentur.de · Antwort in der Regel innerhalb eines Werktags</p>
+					</div>
+
+					<ol class="divide-y divide-kreide/10 border-y border-kreide/10" data-fade>
+						<li class="grid grid-cols-[2.5rem_1fr] gap-3 py-5"><span class="font-mono text-xs text-gold">01</span><div><p class="font-medium">Kurze Einordnung</p><p class="mt-1 text-sm text-kreide/65">Branche, Standort und aktueller Webauftritt reichen für den Start.</p></div></li>
+						<li class="grid grid-cols-[2.5rem_1fr] gap-3 py-5"><span class="font-mono text-xs text-gold">02</span><div><p class="font-medium">20-Minuten-Gespräch</p><p class="mt-1 text-sm text-kreide/65">Wir klären Potenzial, Engpass und sinnvolle nächste Schritte.</p></div></li>
+						<li class="grid grid-cols-[2.5rem_1fr] gap-3 py-5"><span class="font-mono text-xs text-gold">03</span><div><p class="font-medium">Schriftlicher Befund</p><p class="mt-1 text-sm text-kreide/65">Sie erhalten Prioritäten und Empfehlungen — auch ohne Auftrag.</p></div></li>
+					</ol>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- ===================== FOOTER ===================== -->
+	<footer class="overflow-hidden border-t border-kreide/10">
+			<div class="mx-auto max-w-content px-6 pt-16">
+				<div class="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+					<div>
+						<Logo href="#main" />
+						<p class="mt-3 text-sm text-kreide/60">
+						Seewho — Premium-Webseiten und digitale Sichtbarkeit
+					</p>
+				</div>
+				<nav class="flex gap-8 font-mono text-sm text-kreide/70" aria-label="Rechtliches">
+					<a href="/impressum/" class="hover:text-gold">Impressum</a>
+					<a href="/datenschutz/" class="hover:text-gold">Datenschutz</a>
+				</nav>
+			</div>
+
+			<p class="mt-10 font-mono text-xs text-kreide/50">
+				Diese Seite: 0 Cookies · 0 Tracker · gebaut wie für unsere Kunden.
+			</p>
+			</div>
+
+			<div class="px-6 pt-10 pb-4" data-wordmark aria-hidden="true">
+				<img
+					src="/assets/branding/seewho-logo-clean.png"
+					alt=""
+					width="1880"
+					height="680"
+					class="mx-auto block h-auto w-full max-w-[820px] opacity-[0.2] mix-blend-multiply"
+				/>
+			</div>
+		</footer>
+
+	<!-- Mobile sticky CTA (app.js switches it on after the hero) -->
+	<a
+		href="#kontakt"
+		data-mobile-cta
+		class="fixed inset-x-5 bottom-5 z-50 rounded-full bg-gold py-4 text-center font-medium text-white shadow-[0_18px_40px_-10px_rgba(200,111,74,0.45)] transition-transform active:scale-[0.98] md:hidden"
+	>
+		Kostenlose Sichtbarkeits-Analyse
+	</a>
+
+	<script src="../scripts/app.js"></script>
+</Base>

@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+/* Self-hosted fonts (woff2 only, latin subset — covers German incl. äöüß). */
+@font-face {
+	font-family: "Figtree Variable";
+	font-style: normal;
+	font-weight: 300 900;
+	font-display: swap;
+	src: url("/fonts/figtree-variable.woff2") format("woff2-variations");
+}
+
+@font-face {
+	font-family: "Instrument Serif";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/instrument-serif-400.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Instrument Serif";
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/instrument-serif-400-italic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "IBM Plex Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/ibm-plex-mono-400.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "IBM Plex Mono";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2");
+}
+
+@theme {
+	/* Praxispuls brand tokens — do not substitute. */
+	--color-papier: #f7faf7;
+	--color-tinte: #0a2a2e;
+	--color-puls: #17b890;
+	--color-nebel: #e1ece8;
+	--color-akte: #fbf8f1;
+
+	--font-display: "Instrument Serif", serif;
+	--font-body: "Figtree Variable", system-ui, sans-serif;
+	--font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+	--container-content: 1100px;
+}
+
+@layer base {
+	html {
+		background: var(--color-papier);
+		color: var(--color-tinte);
+		font-family: var(--font-body);
+		line-height: 1.65;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		font-family: var(--font-body);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-puls);
+		outline-offset: 3px;
+	}
+
+	::selection {
+		background: var(--color-puls);
+		color: var(--color-papier);
+	}
+}
+
+@layer components {
+	/* EKG chart-paper texture: faint grid like real ECG printout paper. */
+	.ekg-paper {
+		background-image:
+			linear-gradient(color-mix(in srgb, var(--color-tinte) 7%, transparent) 1px, transparent 1px),
+			linear-gradient(90deg, color-mix(in srgb, var(--color-tinte) 7%, transparent) 1px, transparent 1px);
+		background-size: 28px 28px;
+	}
+
+	/*
+	 * Live monitor line: a ghost trace plus a bright beam segment that travels
+	 * along the path forever — like a patient monitor. Beam paths must carry
+	 * pathLength="1000" so the dash math is resolution-independent.
+	 */
+	.ekg-live {
+		display: block;
+		width: 100%;
+		height: 100%;
+		overflow: visible;
+	}
+
+	.ekg-live path {
+		stroke: var(--color-puls);
+		stroke-width: 2.5;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		fill: none;
+	}
+
+	.ekg-live .ekg-live__ghost {
+		opacity: 0.22;
+	}
+
+	.ekg-live .ekg-live__beam {
+		stroke-dasharray: 90 910;
+		stroke-dashoffset: 1000;
+		animation: ekg-flow 4.5s linear infinite;
+		filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-puls) 75%, transparent));
+	}
+
+	/* Soft pulsing halo, e.g. behind the hero SERP card. */
+	.pulse-aura {
+		position: absolute;
+		border-radius: 9999px;
+		background: radial-gradient(
+			closest-side,
+			color-mix(in srgb, var(--color-puls) 20%, transparent),
+			transparent 72%
+		);
+		animation: aura-breathe 7s ease-in-out infinite alternate;
+		pointer-events: none;
+	}
+
+	.float-slow {
+		animation: float-slow 6.5s ease-in-out infinite alternate;
+	}
+
+	.blink-soft {
+		animation: blink-soft 2.6s ease-in-out infinite;
+	}
+}
+
+/* Scroll-reveal: hidden only when JS is present (html.js set by reveal.js),
+   so no-JS visitors always see everything. */
+html.js [data-reveal] {
+	opacity: 0;
+	transform: translateY(26px);
+	transition:
+		opacity 0.7s ease,
+		transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+	transition-delay: var(--reveal-delay, 0s);
+}
+
+html.js [data-reveal].is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+@keyframes ekg-flow {
+	from {
+		stroke-dashoffset: 1000;
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes aura-breathe {
+	from {
+		transform: scale(0.94);
+		opacity: 0.7;
+	}
+	to {
+		transform: scale(1.06);
+		opacity: 1;
+	}
+}
+
+@keyframes float-slow {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes blink-soft {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.55;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	/* Static, fully-drawn fallbacks instead of frozen mid-animation states. */
+	.ekg-live .ekg-live__beam {
+		animation: none;
+		stroke-dasharray: none;
+		stroke-dashoffset: 0;
+	}
+
+	.float-slow,
+	.pulse-aura,
+	.blink-soft {
+		animation: none;
+	}
+
+	html.js [data-reveal] {
+		opacity: 1;
+		transform: none;
+	}
+}

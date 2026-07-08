@@ -1,0 +1,79 @@
+---
+// TODO before launch: replace every [PLATZHALTER] block below with the final,
+// legally reviewed Impressum content. Do not publish with placeholders live.
+import Base from "../layouts/Base.astro";
+import Logo from "../components/Logo.astro";
+---
+
+<Base
+	title="Impressum — Seewho"
+	description="Impressum von Seewho, Agentur für Premium-Webseiten und digitale Sichtbarkeit."
+	path="/impressum/"
+	noindex
+>
+	<header class="mx-auto flex max-w-content items-center px-6 py-6">
+		<Logo href="/" />
+	</header>
+
+	<main id="main">
+		<section class="mx-auto max-w-content px-6 py-16 md:py-24">
+			<h1 class="font-display text-4xl sm:text-5xl">Impressum</h1>
+
+			<div class="mt-12 max-w-prose space-y-10 text-kreide/80">
+				<section>
+					<h2 class="font-mono text-xs tracking-[0.2em] text-kreide/60 uppercase">
+						Angaben gemäß § 5 DDG
+					</h2>
+					<p class="mt-3">
+						[PLATZHALTER: Vollständiger Name]<br />
+						[PLATZHALTER: Straße und Hausnummer]<br />
+						[PLATZHALTER: PLZ und Ort]
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-xs tracking-[0.2em] text-kreide/60 uppercase">Kontakt</h2>
+					<p class="mt-3">
+						E-Mail: <a href="mailto:kontakt@umkreis-agentur.de" class="text-kreide hover:text-gold">kontakt@umkreis-agentur.de</a>
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-xs tracking-[0.2em] text-kreide/60 uppercase">
+						Umsatzsteuer
+					</h2>
+					<p class="mt-3">
+						Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen.
+						[PLATZHALTER: Falls nicht zutreffend, USt-IdNr. gemäß § 27a UStG ergänzen.]
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-xs tracking-[0.2em] text-kreide/60 uppercase">
+						Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+					</h2>
+					<p class="mt-3">[PLATZHALTER: Name, Anschrift wie oben]</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-xs tracking-[0.2em] text-kreide/60 uppercase">Verbraucherstreitbeilegung</h2>
+					<p class="mt-3">Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-xs tracking-[0.2em] text-kreide/60 uppercase">
+						Haftung für Inhalte
+					</h2>
+					<p class="mt-3">
+						Wir sind für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Eine Verpflichtung zur
+						Überwachung übermittelter oder gespeicherter fremder Informationen besteht nicht.
+					</p>
+				</section>
+			</div>
+
+			<a href="/" class="mt-14 inline-block font-mono text-sm text-kreide/70 hover:text-gold">
+				← Zurück zur Startseite
+			</a>
+		</section>
+	</main>
+</Base>

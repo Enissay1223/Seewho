@@ -1,0 +1,88 @@
+---
+import "../styles/global.css";
+
+interface Props {
+	title: string;
+	description: string;
+	/** Path relative to site root, e.g. "/impressum/". Defaults to current path. */
+	path?: string;
+}
+
+const { title, description, path = Astro.url.pathname } = Astro.props;
+const canonicalURL = new URL(path, Astro.site);
+const ogImageURL = new URL("/assets/og.jpg", Astro.site);
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "ProfessionalService",
+	name: "Praxispuls",
+	description:
+		"Praxismarketing für Ärzte, Zahnärzte, Physiotherapeuten und Kosmetikpraxen: Webseiten, lokale Sichtbarkeit und Bewertungs-Management.",
+	url: "https://praxispuls.de",
+	areaServed: ["Essen", "Dortmund", "Ruhrgebiet", "NRW"],
+	image: ogImageURL.toString(),
+};
+---
+
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="de_DE" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:site_name" content="Praxispuls" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImageURL} />
+
+		<!-- Preload critical fonts used above the fold (hero: eyebrow=mono, H1=display, sub=body). -->
+		<link
+			rel="preload"
+			href="/fonts/figtree-variable.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="/fonts/instrument-serif-400.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="/fonts/ibm-plex-mono-400.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	</head>
+	<body class="bg-papier text-tinte">
+		<a
+			href="#main"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-tinte focus:px-4 focus:py-2 focus:text-papier"
+		>
+			Zum Inhalt springen
+		</a>
+		<slot />
+	</body>
+</html>

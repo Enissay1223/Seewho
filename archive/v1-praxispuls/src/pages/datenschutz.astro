@@ -1,0 +1,91 @@
+---
+// TODO before launch: have this Datenschutzerklärung reviewed by a legal
+// source against the actual hosting/processing setup before going live.
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+import Logo from "../components/Logo.astro";
+---
+
+<Base title="Datenschutz — Praxispuls" description="Datenschutzerklärung von Praxispuls." path="/datenschutz/">
+	<header class="mx-auto flex max-w-content items-center px-6 py-6">
+		<Logo />
+	</header>
+
+	<main id="main">
+		<Section>
+			<h1 class="font-display text-4xl">Datenschutzerklärung</h1>
+
+			<div class="mt-10 max-w-prose space-y-8 text-tinte/85">
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">1. Verantwortlicher</h2>
+					<p class="mt-2">
+						[PLATZHALTER: Vollständiger Name]<br />
+						[PLATZHALTER: Straße und Hausnummer]<br />
+						[PLATZHALTER: PLZ und Ort]<br />
+						E-Mail: <a href="mailto:kontakt@praxispuls.de" class="hover:text-puls">kontakt@praxispuls.de</a>
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">2. Hosting</h2>
+					<p class="mt-2">
+						Diese Website wird bei [PLATZHALTER: Hosting-Anbieter, z. B. Vercel Inc. oder ein
+						Anbieter mit Serverstandort in der EU] gehostet. Beim Aufruf der Seite verarbeitet
+						der Hoster automatisch technische Zugriffsdaten (Server-Logfiles), etwa IP-Adresse,
+						Datum und Uhrzeit des Zugriffs, aufgerufene Datei und User-Agent. Diese Verarbeitung
+						erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
+						einem technisch fehlerfreien Betrieb).
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">3. Cookies und Tracking</h2>
+					<p class="mt-2">
+						Diese Website setzt keine Cookies und kein Tracking Dritter ein. Es findet keine
+						Analyse des Nutzerverhaltens statt.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">4. Kontaktformular</h2>
+					<p class="mt-2">
+						Wenn Sie uns über das Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben
+						aus dem Formular inklusive der von Ihnen dort angegebenen Kontaktdaten zur
+						Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.
+						Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Die Verarbeitung erfolgt
+						auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der
+						Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher
+						Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf
+						unserem berechtigten Interesse an der effektiven Bearbeitung von Anfragen (Art. 6
+						Abs. 1 lit. f DSGVO). Das Formular wird technisch über [PLATZHALTER:
+						Formular-Dienstleister, z. B. Formspree — Auftragsverarbeitungsvertrag prüfen]
+						verarbeitet.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">5. SSL-Verschlüsselung</h2>
+					<p class="mt-2">
+						Diese Seite nutzt aus Sicherheitsgründen eine SSL-Verschlüsselung zur Übertragung
+						vertraulicher Inhalte, erkennbar am Präfix „https://" in der Adresszeile Ihres
+						Browsers.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">6. Ihre Rechte</h2>
+					<p class="mt-2">
+						Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten
+						personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der
+						Datenverarbeitung und ein Recht auf Berichtigung, Sperrung oder Löschung dieser
+						Daten (Art. 15–17 DSGVO). Zudem steht Ihnen ein Beschwerderecht bei der zuständigen
+						Aufsichtsbehörde zu.
+					</p>
+				</section>
+			</div>
+		</Section>
+	</main>
+
+	<Footer />
+</Base>

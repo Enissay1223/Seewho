@@ -1,0 +1,23 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<footer class="bg-tinte text-papier">
+	<div class="mx-auto max-w-content px-6 py-14">
+		<div class="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+			<div>
+				<Logo tone="light" />
+				<p class="mt-3 text-sm text-papier/70">Praxispuls — Praxismarketing aus Essen</p>
+			</div>
+
+			<nav class="flex gap-6 font-mono text-sm text-papier/80" aria-label="Rechtliches">
+				<a href="/impressum/" class="hover:text-puls">Impressum</a>
+				<a href="/datenschutz/" class="hover:text-puls">Datenschutz</a>
+			</nav>
+		</div>
+
+		<p class="mt-10 border-t border-papier/15 pt-6 font-mono text-xs text-papier/75">
+			Diese Seite: Lighthouse 99+ in allen Kategorien · 0 Cookies · 0 Tracker.
+		</p>
+	</div>
+</footer>

@@ -1,0 +1,24 @@
+---
+interface Props {
+	id?: string;
+	bg?: "papier" | "nebel" | "tinte" | "akte";
+	class?: string;
+	/** Narrower vertical padding, e.g. for the trust strip. */
+	tight?: boolean;
+}
+
+const { id, bg = "papier", class: className = "", tight = false } = Astro.props;
+
+const bgClasses: Record<string, string> = {
+	papier: "bg-papier text-tinte",
+	nebel: "bg-nebel text-tinte",
+	tinte: "bg-tinte text-papier",
+	akte: "bg-akte text-tinte",
+};
+---
+
+<section id={id} class={`${bgClasses[bg]} ${className}`}>
+	<div class:list={["mx-auto max-w-content px-6", tight ? "py-6" : "py-20 md:py-28"]}>
+		<slot />
+	</div>
+</section>

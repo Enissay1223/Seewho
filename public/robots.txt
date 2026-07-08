@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://umkreis-agentur.de/sitemap-index.xml

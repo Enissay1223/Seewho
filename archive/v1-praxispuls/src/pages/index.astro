@@ -1,0 +1,408 @@
+---
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import PulseLine from "../components/PulseLine.astro";
+import LabValue from "../components/LabValue.astro";
+import KarteiCard from "../components/KarteiCard.astro";
+import SerpDemo from "../components/SerpDemo.astro";
+import Logo from "../components/Logo.astro";
+import Footer from "../components/Footer.astro";
+import MockupLaptop from "../components/MockupLaptop.astro";
+import MockupPhone from "../components/MockupPhone.astro";
+
+const steps = [
+	{ n: "01", title: "Anamnese", text: "Kostenloser Sichtbarkeits-Check, 20 Minuten." },
+	{ n: "02", title: "Befund", text: "Schriftliche Analyse mit konkreten Zahlen." },
+	{ n: "03", title: "Therapie", text: "Webseite, Local SEO, Bewertungs-System." },
+	{ n: "04", title: "Nachsorge", text: "Monatliche Betreuung mit Klartext-Report." },
+];
+---
+
+<Base
+	title="Praxispuls — Praxismarketing für Essen, Dortmund und das Ruhrgebiet"
+	description="Webseiten, lokale Sichtbarkeit und Bewertungs-Management für Praxen — messbar, DSGVO-konform, ohne Agentur-Blabla."
+>
+	<header class="mx-auto flex max-w-content items-center justify-between px-6 py-6">
+		<Logo />
+		<a href="#kontakt" class="font-mono text-sm text-tinte/70 hover:text-puls">
+			Kostenlosen Befund →
+		</a>
+	</header>
+
+	<main id="main">
+		<!-- 1. HERO -->
+		<Section class="ekg-paper pt-4 md:pt-10">
+			<div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+				<div>
+					<p class="font-mono text-sm text-tinte/70" data-reveal>
+						Praxismarketing · Ruhrgebiet & NRW
+					</p>
+					<!-- No data-reveal here: the H1 is the LCP element, keep its paint instant. -->
+					<h1 class="mt-4 font-display text-[2.75rem] leading-[1.05] sm:text-6xl">
+						Ihre Praxis ist <em>exzellent</em>. Google weiß es nur noch nicht.
+					</h1>
+					<p
+						class="mt-6 max-w-prose text-lg text-tinte/80"
+						data-reveal
+						style="--reveal-delay: 0.16s"
+					>
+						Webseiten, lokale Sichtbarkeit und Bewertungs-Management für Praxen — messbar,
+						DSGVO-konform, ohne Agentur-Blabla.
+					</p>
+					<div
+						class="mt-8 flex flex-wrap items-center gap-6"
+						data-reveal
+						style="--reveal-delay: 0.24s"
+					>
+						<a
+							href="#kontakt"
+							class="inline-block rounded-2xl bg-puls px-6 py-3.5 font-medium text-tinte shadow-[0_12px_24px_-8px_rgba(23,184,144,0.5)] transition-transform hover:scale-[1.02]"
+						>
+							Kostenlosen Sichtbarkeits-Befund anfordern
+						</a>
+						<a href="#behandlungsplan" class="font-mono text-sm text-tinte/70 hover:text-puls">
+							So arbeite ich →
+						</a>
+					</div>
+				</div>
+
+				<div class="relative">
+					<div class="pulse-aura -inset-10" aria-hidden="true"></div>
+					<div class="relative">
+						<SerpDemo />
+					</div>
+				</div>
+			</div>
+
+			<!-- Live monitor line: ghost trace + travelling beam. -->
+			<div class="mx-auto mt-16 h-16 max-w-md" aria-hidden="true">
+				<svg class="ekg-live" viewBox="0 0 400 100" preserveAspectRatio="none" fill="none">
+					<path
+						class="ekg-live__ghost"
+						d="M0,58 H150 L160,26 L171,88 L182,10 L193,58 H230 C270,58 272,32 310,30 C345,28 360,12 400,6"
+						vector-effect="non-scaling-stroke"></path>
+					<path
+						class="ekg-live__beam"
+						pathLength="1000"
+						d="M0,58 H150 L160,26 L171,88 L182,10 L193,58 H230 C270,58 272,32 310,30 C345,28 360,12 400,6"
+						vector-effect="non-scaling-stroke"></path>
+				</svg>
+			</div>
+		</Section>
+
+		<!-- 2. TRUST STRIP: labels make clear what is about me vs. about the sites I build. -->
+		<Section tight bg="papier" class="border-y border-tinte/10">
+			<dl class="grid gap-6 text-center font-mono sm:grid-cols-3 sm:gap-4">
+				<div>
+					<dt class="text-[11px] tracking-widest text-tinte/70 uppercase">Wer dahinter steht</dt>
+					<dd class="mt-1.5 text-sm">10+ Jahre IT-Delivery im Konzernumfeld</dd>
+				</div>
+				<div>
+					<dt class="text-[11px] tracking-widest text-tinte/70 uppercase">Zertifiziert</dt>
+					<dd class="mt-1.5 text-sm">PRINCE2 & Scrum</dd>
+				</div>
+				<div>
+					<dt class="text-[11px] tracking-widest text-tinte/70 uppercase">Ihre Webseite</dt>
+					<dd class="mt-1.5 text-sm">100&nbsp;% DSGVO-konform, gehostet in Deutschland</dd>
+				</div>
+			</dl>
+		</Section>
+
+		<!-- 3. DER BEFUND -->
+		<Section id="befund" bg="nebel">
+			<h2 class="font-display text-4xl sm:text-5xl" data-reveal>Woran Praxen online kranken.</h2>
+			<div class="mt-10 grid gap-5 sm:grid-cols-3">
+				<div data-reveal>
+					<LabValue label="Ladezeit" value="6,2 s" reference="< 1,5 s" verdict="auffällig" />
+				</div>
+				<div data-reveal style="--reveal-delay: 0.12s">
+					<LabValue label="Google-Ranking" value="Seite 3" reference="Top 3" verdict="auffällig" />
+				</div>
+				<div data-reveal style="--reveal-delay: 0.24s">
+					<LabValue label="Neue Bewertungen" value="0/Monat" reference="4–8" verdict="auffällig" />
+				</div>
+			</div>
+			<p class="mt-10 max-w-prose text-tinte/80" data-reveal>
+				Jeden Tag entscheiden sich Patienten für die Praxis, die Google ihnen zuerst zeigt.
+				Nicht für die bessere. Für die sichtbarere.
+			</p>
+		</Section>
+
+		<!-- 4. BEHANDLUNGSPLAN: horizontal EKG timeline on desktop, clean stack on mobile. -->
+		<Section id="behandlungsplan" bg="papier" class="ekg-paper">
+			<h2 class="font-display text-4xl sm:text-5xl" data-reveal>
+				Vom Befund zur <em>vollen</em> Praxis.
+			</h2>
+
+			<div class="relative mt-16">
+				<!-- The EKG line runs horizontally through all four markers (desktop). -->
+				<div class="absolute inset-x-0 top-0 hidden h-12 md:block" aria-hidden="true">
+					<PulseLine variant="journey" animate="reveal" class="h-full" />
+				</div>
+
+				<ol class="grid gap-10 md:grid-cols-4 md:gap-8">
+					{
+						steps.map((step, i) => (
+							<li
+								class="flex gap-5 md:block md:text-center"
+								data-reveal
+								style={`--reveal-delay: ${i * 0.12}s`}
+							>
+								<span
+									data-ekg-marker
+									class="ekg-marker relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-papier font-mono text-sm ring-2 ring-tinte/15 md:mx-auto"
+								>
+									{step.n}
+								</span>
+								<div class="pt-1.5 md:pt-5">
+									<h3 class="font-display text-2xl">{step.title}</h3>
+									<p class="mt-1.5 text-tinte/75">{step.text}</p>
+								</div>
+							</li>
+						))
+					}
+				</ol>
+			</div>
+		</Section>
+
+		<!-- 5. PAKETE -->
+		<!-- [PREISE GGF. ANPASSEN] — Preise vor Launch final abstimmen. -->
+		<Section id="pakete" bg="papier">
+			<h2 class="font-display text-4xl sm:text-5xl" data-reveal>
+				Der Behandlungsplan im Detail.
+			</h2>
+
+			<div class="mt-14 grid gap-x-8 gap-y-14 md:grid-cols-3 md:gap-y-0">
+				<div data-reveal>
+					<KarteiCard title="Sichtbar" price="2.900 €" priceNote="einmalig + 200 €/Monat Nachsorge">
+						<li>Praxis-Webseite, DSGVO-konform</li>
+						<li>In 14 Tagen live</li>
+						<li>Monatliche Nachsorge inklusive</li>
+					</KarteiCard>
+				</div>
+
+				<div data-reveal style="--reveal-delay: 0.12s">
+					<KarteiCard title="Wachstum" price="500 €" priceNote="pro Monat" recommended rotate={1}>
+						<li>Alles aus Sichtbar</li>
+						<li>Local SEO & Google-Profil</li>
+						<li>Bewertungs-System</li>
+						<li>Monatlicher Klartext-Report</li>
+					</KarteiCard>
+				</div>
+
+				<div data-reveal style="--reveal-delay: 0.24s">
+					<KarteiCard title="Autopilot" price="800 €" priceNote="pro Monat">
+						<li>Alles aus Wachstum</li>
+						<li>Terminerinnerungen & Recall</li>
+						<li>WhatsApp-Funnel</li>
+					</KarteiCard>
+				</div>
+			</div>
+
+			<p class="mt-14 text-center font-mono text-sm text-tinte/70">
+				Keine Laufzeit-Tricks: Nachsorge ist monatlich kündbar.
+			</p>
+		</Section>
+
+		<!-- 6. REFERENZEN: dark section, monitor-in-a-dark-room. One is a medical
+		     practice, one a cosmetics studio — labeled honestly as such. -->
+		<Section id="referenzen" bg="tinte" class="relative overflow-hidden">
+			<!-- Live monitor line glowing across the top, like a patient monitor at night. -->
+			<div class="pointer-events-none absolute inset-x-0 top-8 h-24" aria-hidden="true">
+				<svg class="ekg-live" viewBox="0 0 400 100" preserveAspectRatio="none" fill="none">
+					<path
+						class="ekg-live__ghost"
+						d="M0,82 C70,80 110,64 150,58 C210,50 240,22 400,8"
+						vector-effect="non-scaling-stroke"></path>
+					<path
+						class="ekg-live__beam"
+						pathLength="1000"
+						d="M0,82 C70,80 110,64 150,58 C210,50 240,22 400,8"
+						vector-effect="non-scaling-stroke"></path>
+				</svg>
+			</div>
+
+			<h2 class="relative font-display text-4xl sm:text-5xl" data-reveal>
+				Zwei Kunden, ein Muster.
+			</h2>
+			<p class="relative mt-5 max-w-prose text-papier/80" data-reveal>
+				Ob Arztpraxis oder Kosmetikstudio — das System dahinter ist dasselbe: sichtbar werden,
+				Vertrauen aufbauen, Termine füllen.
+			</p>
+
+			<div class="relative mt-14 grid gap-14 md:grid-cols-2 md:gap-10">
+				<!-- Case 1 — TODO: Name, Fachrichtung, Stadt und echte Metrik einsetzen, sobald
+				     verfügbar. Laptop-Illustration dann durch echten Screenshot ersetzen. -->
+				<article data-reveal>
+					<p class="font-mono text-xs tracking-widest text-papier/75 uppercase">
+						Case 01 · Arztpraxis
+					</p>
+					<div class="mt-6">
+						<MockupLaptop />
+					</div>
+					<p class="mt-6 font-mono text-sm text-papier/75">
+						[Arztpraxis — Fachrichtung/Stadt einsetzen]
+					</p>
+					<p class="mt-2 font-mono text-lg text-puls">
+						[z. B. „Platz 27 → Platz 3 für ‚Fachgebiet Stadtteil‘ in 8 Wochen"]
+					</p>
+				</article>
+
+				<!-- Case 2 — TODO: reale Bewertungs-Metrik einsetzen, sobald final. -->
+				<article data-reveal style="--reveal-delay: 0.15s">
+					<p class="font-mono text-xs tracking-widest text-papier/75 uppercase">
+						Case 02 · Kosmetikstudio
+					</p>
+					<div class="mt-6">
+						<MockupPhone />
+					</div>
+					<p class="mt-6 font-mono text-sm text-papier/75">MM Beauty Room, Dortmund</p>
+					<p class="mt-2 font-mono text-lg text-puls">
+						[z. B. „Bewertungen von X auf Y in Z Monaten — vollautomatisch"]
+					</p>
+				</article>
+			</div>
+		</Section>
+
+		<!-- 7. ÜBER MICH -->
+		<Section id="ueber-mich" bg="papier">
+			<h2 class="font-display text-4xl sm:text-5xl" data-reveal>
+				Warum ein IT-Delivery-Profi und keine Werbeagentur?
+			</h2>
+
+			<div class="mt-10 grid gap-10 md:grid-cols-[220px_1fr] md:gap-14" data-reveal>
+				<!-- Portrait placeholder: swap for <img src="/assets/portrait.jpg" alt="Yassine, Gründer von Praxispuls" width="220" height="220" loading="lazy"> once the photo is ready. -->
+				<div
+					class="flex aspect-square w-full max-w-[220px] items-center justify-center rounded-2xl border-2 border-dashed border-tinte/20 bg-nebel"
+					role="img"
+					aria-label="Platzhalter für Porträtfoto"
+				>
+					<p class="px-4 text-center font-mono text-xs text-tinte/70">[Foto folgt]</p>
+				</div>
+
+				<div class="max-w-prose space-y-5 text-tinte/85">
+					<p>
+						Zehn Jahre lang habe ich Rollouts und Transformationen für einen der größten
+						Handelskonzerne Europas geleitet. Projekte mit Hunderten Standorten, engen Fristen
+						und null Toleranz für Chaos.
+					</p>
+					<p>
+						Diese Erfahrung übertrage ich auf Ihre Praxis: Ich baue Systeme, keine
+						Einzelwebseiten. Was einmal läuft, soll auch in einem Jahr noch laufen — ohne dass
+						Sie sich darum kümmern müssen.
+					</p>
+					<p>
+						Vieles, wofür Agenturen Stunden abrechnen, automatisiere ich. Das spart Ihnen Geld
+						und mir keine Zeit, die ich nicht in Ihr Ergebnis stecken würde.
+					</p>
+					<p class="font-mono text-sm text-tinte/70">
+						Sie googeln mich? Gut. Genau das sollen Ihre Patienten mit Ihnen auch tun.
+					</p>
+				</div>
+			</div>
+		</Section>
+
+		<!-- 8. ANAMNESE / KONTAKT -->
+		<Section id="kontakt" bg="nebel">
+			<h2 class="font-display text-4xl sm:text-5xl" data-reveal>Starten wir mit der Anamnese.</h2>
+			<p class="mt-5 max-w-prose text-tinte/80" data-reveal>
+				20 Minuten, kostenlos, unverbindlich. Danach erhalten Sie einen schriftlichen Befund
+				Ihrer Online-Sichtbarkeit — ob wir zusammenarbeiten oder nicht.
+			</p>
+
+			<div class="mt-10 grid gap-12 md:grid-cols-2" data-reveal>
+				<!-- Form action: Formspree-Endpoint oder eigenes Backend einsetzen. -->
+				<form
+					action="https://formspree.io/f/[FORM-ENDPOINT EINSETZEN]"
+					method="POST"
+					class="space-y-4"
+				>
+					<div>
+						<label for="name" class="font-mono text-xs tracking-wide text-tinte/70 uppercase"
+							>Name</label
+						>
+						<input
+							id="name"
+							name="name"
+							type="text"
+							required
+							class="mt-1.5 w-full rounded-lg border border-tinte/20 bg-papier px-3.5 py-2.5"
+						/>
+					</div>
+					<div>
+						<label for="praxis" class="font-mono text-xs tracking-wide text-tinte/70 uppercase"
+							>Praxis / Fachrichtung</label
+						>
+						<input
+							id="praxis"
+							name="praxis"
+							type="text"
+							class="mt-1.5 w-full rounded-lg border border-tinte/20 bg-papier px-3.5 py-2.5"
+						/>
+					</div>
+					<div>
+						<label for="kontakt-feld" class="font-mono text-xs tracking-wide text-tinte/70 uppercase"
+							>E-Mail oder Telefon</label
+						>
+						<input
+							id="kontakt-feld"
+							name="kontakt"
+							type="text"
+							required
+							class="mt-1.5 w-full rounded-lg border border-tinte/20 bg-papier px-3.5 py-2.5"
+						/>
+					</div>
+					<div>
+						<label for="nachricht" class="font-mono text-xs tracking-wide text-tinte/70 uppercase"
+							>Ihre Nachricht</label
+						>
+						<textarea
+							id="nachricht"
+							name="nachricht"
+							rows="4"
+							class="mt-1.5 w-full rounded-lg border border-tinte/20 bg-papier px-3.5 py-2.5"
+						></textarea>
+					</div>
+					<button
+						type="submit"
+						class="rounded-2xl bg-puls px-6 py-3.5 font-medium text-tinte transition-transform hover:scale-[1.02]"
+					>
+						Befund anfordern
+					</button>
+				</form>
+
+				<div class="font-mono text-sm text-tinte/70">
+					<p class="text-tinte/70 uppercase tracking-wide text-xs">Oder direkt</p>
+					<p class="mt-3">
+						<a href="mailto:kontakt@praxispuls.de" class="hover:text-puls">kontakt@praxispuls.de</a>
+					</p>
+					<p class="mt-1.5">
+						<a href="tel:+4900000000" class="hover:text-puls">[TELEFONNUMMER EINSETZEN]</a>
+					</p>
+					<p class="mt-6 text-tinte/70">Keine Cookies. Keine Captcha-Mauern.</p>
+				</div>
+			</div>
+		</Section>
+	</main>
+
+	<Footer />
+
+	<script src="../scripts/ekg-scroll.js"></script>
+	<script src="../scripts/reveal.js"></script>
+</Base>
+
+<style>
+	.ekg-marker {
+		color: color-mix(in srgb, var(--color-tinte) 70%, transparent);
+		transition:
+			color 0.5s ease,
+			background-color 0.5s ease,
+			box-shadow 0.5s ease;
+	}
+
+	.ekg-marker.is-active {
+		color: var(--color-tinte);
+		background: var(--color-puls);
+		box-shadow: 0 0 0 2px var(--color-puls);
+	}
+</style>

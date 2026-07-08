@@ -1,0 +1,202 @@
+---
+/**
+ * Illustrated laptop showing a miniature client website that slowly scrolls
+ * by itself — a glowing screen in the dark section. Honest placeholder for
+ * the Case screenshot; swap .laptop__page content for a real <img> later.
+ */
+---
+
+<div class="laptop select-none" aria-hidden="true">
+	<div class="laptop__screen">
+		<div class="laptop__browserbar">
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="urlbar font-mono">beispiel-praxis.de</span>
+		</div>
+		<div class="laptop__page">
+			<div class="page-scroll">
+				<div class="mini-nav">
+					<span class="mini-logo"></span>
+					<span class="mini-links"><i></i><i></i><i></i></span>
+				</div>
+				<div class="mini-hero">
+					<div class="line line--h1"></div>
+					<div class="line line--h1 short"></div>
+					<div class="line line--text"></div>
+					<div class="line line--text short"></div>
+					<div class="mini-cta"></div>
+				</div>
+				<div class="mini-cards">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<div class="mini-footer"></div>
+			</div>
+		</div>
+	</div>
+	<div class="laptop__base"></div>
+</div>
+
+<style>
+	.laptop {
+		width: 100%;
+		max-width: 26rem;
+		margin-inline: auto;
+		--mock-paper: #fffaf2;
+		--mock-ink: #243229;
+		--mock-muted: rgba(36, 50, 41, 0.28);
+	}
+
+	.laptop__screen {
+		border: 3px solid rgba(36, 50, 41, 0.1);
+		border-radius: 14px 14px 4px 4px;
+		background: var(--mock-paper);
+		overflow: hidden;
+		box-shadow: 0 28px 70px -48px rgba(65, 49, 35, 0.5);
+	}
+
+	.laptop__base {
+		height: 9px;
+		margin-inline: -4%;
+		border-radius: 3px 3px 10px 10px;
+		background: rgba(36, 50, 41, 0.18);
+	}
+
+	.laptop__browserbar {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		padding: 7px 10px;
+		border-bottom: 1px solid rgba(36, 50, 41, 0.1);
+		background: #f5eadb;
+	}
+
+	.dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 999px;
+		background: rgba(36, 50, 41, 0.25);
+	}
+
+	.urlbar {
+		margin-left: 8px;
+		flex: 1;
+		font-size: 8px;
+		line-height: 1;
+		color: rgba(36, 50, 41, 0.72);
+		background: rgba(255, 255, 255, 0.72);
+		border-radius: 999px;
+		padding: 4px 9px;
+	}
+
+	.laptop__page {
+		height: 200px;
+		overflow: hidden;
+	}
+
+	/* The page scrolls itself, gently, forever. */
+	.page-scroll {
+		padding: 14px 16px;
+		animation: page-scroll 9s ease-in-out infinite alternate;
+	}
+
+	@keyframes page-scroll {
+		0%,
+		18% {
+			transform: translateY(0);
+		}
+		82%,
+		100% {
+			transform: translateY(-80px);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.page-scroll {
+			animation: none;
+		}
+	}
+
+	.mini-nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 14px;
+	}
+
+	.mini-logo {
+		width: 42px;
+		height: 7px;
+		border-radius: 999px;
+		background: var(--mock-ink);
+	}
+
+	.mini-links {
+		display: flex;
+		gap: 6px;
+	}
+
+	.mini-links i {
+		width: 20px;
+		height: 5px;
+		border-radius: 999px;
+		background: var(--mock-muted);
+	}
+
+	.line {
+		border-radius: 999px;
+		background: var(--mock-ink);
+	}
+
+	.line--h1 {
+		height: 10px;
+		width: 78%;
+		margin-bottom: 6px;
+	}
+
+	.line--h1.short {
+		width: 55%;
+		margin-bottom: 10px;
+	}
+
+	.line--text {
+		height: 5px;
+		width: 88%;
+		margin-bottom: 5px;
+		background: var(--mock-muted);
+	}
+
+	.line--text.short {
+		width: 62%;
+	}
+
+	.mini-cta {
+		margin-top: 10px;
+		width: 86px;
+		height: 16px;
+		border-radius: 999px;
+		background: var(--color-gold);
+	}
+
+	.mini-cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 8px;
+		margin-top: 16px;
+	}
+
+	.mini-cards div {
+		height: 44px;
+		border-radius: 7px;
+		background: rgba(36, 50, 41, 0.08);
+	}
+
+	.mini-footer {
+		margin-top: 14px;
+		height: 30px;
+		border-radius: 7px 7px 0 0;
+		background: var(--mock-ink);
+	}
+</style>

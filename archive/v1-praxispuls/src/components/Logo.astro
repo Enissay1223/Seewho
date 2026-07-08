@@ -1,0 +1,24 @@
+---
+interface Props {
+	/** "dark" text for use on light backgrounds, "light" text for the dark Referenzen/Footer sections. */
+	tone?: "dark" | "light";
+	class?: string;
+}
+
+const { tone = "dark", class: className = "" } = Astro.props;
+const textColor = tone === "dark" ? "text-tinte" : "text-papier";
+---
+
+<a href="#main" class={`flex items-center gap-2.5 ${className}`} aria-label="Praxispuls — Startseite">
+	<svg width="34" height="18" viewBox="0 0 120 40" fill="none" aria-hidden="true">
+		<path
+			d="M0,24 H38 L44,9 L52,33 L60,3 L68,24 H80 C92,24 93,13 104,12 C113,11 116,5 120,2"
+			stroke="var(--color-puls)"
+			stroke-width="4"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			vector-effect="non-scaling-stroke"
+		></path>
+	</svg>
+	<span class={`font-mono text-sm font-medium tracking-wide ${textColor}`}>Praxispuls</span>
+</a>

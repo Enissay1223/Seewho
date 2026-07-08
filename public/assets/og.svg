@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fbf7ef"/>
+  <path d="M0 0h1200v630H0z" fill="url(#grid)" opacity=".45"/>
+  <circle cx="958" cy="168" r="250" fill="#c86f4a" opacity=".12"/>
+  <circle cx="1030" cy="430" r="230" fill="#7fa185" opacity=".16"/>
+  <rect x="785" y="105" width="275" height="350" rx="38" fill="#fff" stroke="#243229" stroke-opacity=".08"/>
+  <rect x="825" y="153" width="195" height="150" rx="26" fill="#f3c9a4"/>
+  <rect x="825" y="327" width="88" height="18" rx="9" fill="#243229" opacity=".82"/>
+  <rect x="825" y="363" width="150" height="12" rx="6" fill="#243229" opacity=".28"/>
+  <rect x="825" y="391" width="118" height="12" rx="6" fill="#243229" opacity=".2"/>
+  <text x="88" y="145" fill="#c86f4a" font-family="monospace" font-size="22" letter-spacing="8">UMKREIS</text>
+  <text x="88" y="285" fill="#243229" font-family="Georgia, serif" font-size="64">Premium-Webseiten</text>
+  <text x="88" y="375" fill="#c86f4a" font-family="Georgia, serif" font-size="68" font-style="italic">die anziehend wirken.</text>
+  <text x="88" y="490" fill="#243229" opacity=".72" font-family="Arial, sans-serif" font-size="28">Digitale Sichtbarkeit fuer inhabergefuehrte Unternehmen.</text>
+  <defs>
+    <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0v72" fill="none" stroke="#243229" stroke-opacity=".07"/>
+    </pattern>
+  </defs>
+</svg>

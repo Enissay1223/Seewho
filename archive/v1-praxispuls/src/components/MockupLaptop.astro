@@ -1,0 +1,214 @@
+---
+/**
+ * Illustrated laptop showing a miniature practice website that slowly scrolls
+ * by itself. Serves as the honest, on-brand placeholder for the Case-1
+ * screenshot — swap .laptop__page content for a real <img> once available.
+ */
+---
+
+<div class="laptop float-slow" aria-hidden="true">
+	<div class="laptop__screen">
+		<div class="laptop__browserbar">
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="urlbar font-mono">praxis-beispiel.de</span>
+		</div>
+		<div class="laptop__page">
+			<div class="page-scroll">
+				<div class="mini-nav">
+					<span class="mini-logo"></span>
+					<span class="mini-links"><i></i><i></i><i></i></span>
+				</div>
+				<div class="mini-hero">
+					<div class="line line--h1"></div>
+					<div class="line line--h1 short"></div>
+					<div class="line line--text"></div>
+					<div class="line line--text short"></div>
+					<div class="mini-cta"></div>
+				</div>
+				<svg class="mini-pulse" viewBox="0 0 200 24" preserveAspectRatio="none">
+					<path d="M0,15 H62 L70,5 L78,21 L86,15 H118 C150,15 162,7 200,5" fill="none"></path>
+				</svg>
+				<div class="mini-cards">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<div class="mini-footer"></div>
+			</div>
+		</div>
+	</div>
+	<div class="laptop__base"></div>
+</div>
+
+<style>
+	.laptop {
+		width: 100%;
+		max-width: 26rem;
+		margin-inline: auto;
+	}
+
+	.laptop__screen {
+		border: 3px solid color-mix(in srgb, var(--color-papier) 25%, transparent);
+		border-radius: 14px 14px 4px 4px;
+		background: var(--color-papier);
+		overflow: hidden;
+		box-shadow: 0 0 44px color-mix(in srgb, var(--color-puls) 14%, transparent);
+	}
+
+	.laptop__base {
+		height: 9px;
+		margin-inline: -4%;
+		border-radius: 3px 3px 10px 10px;
+		background: color-mix(in srgb, var(--color-papier) 30%, var(--color-tinte));
+	}
+
+	.laptop__browserbar {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		padding: 7px 10px;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-tinte) 12%, transparent);
+		background: var(--color-nebel);
+	}
+
+	.dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-tinte) 22%, transparent);
+	}
+
+	.urlbar {
+		margin-left: 8px;
+		flex: 1;
+		font-size: 8px;
+		line-height: 1;
+		color: color-mix(in srgb, var(--color-tinte) 75%, transparent);
+		background: var(--color-papier);
+		border-radius: 999px;
+		padding: 4px 9px;
+	}
+
+	.laptop__page {
+		height: 200px;
+		overflow: hidden;
+	}
+
+	/* The page scrolls itself, gently, forever. */
+	.page-scroll {
+		padding: 14px 16px;
+		animation: page-scroll 9s ease-in-out infinite alternate;
+	}
+
+	@keyframes page-scroll {
+		0%,
+		18% {
+			transform: translateY(0);
+		}
+		82%,
+		100% {
+			transform: translateY(-92px);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.page-scroll {
+			animation: none;
+		}
+	}
+
+	.mini-nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 14px;
+	}
+
+	.mini-logo {
+		width: 42px;
+		height: 7px;
+		border-radius: 999px;
+		background: var(--color-tinte);
+	}
+
+	.mini-links {
+		display: flex;
+		gap: 6px;
+	}
+
+	.mini-links i {
+		width: 20px;
+		height: 5px;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-tinte) 25%, transparent);
+	}
+
+	.line {
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-tinte) 85%, transparent);
+	}
+
+	.line--h1 {
+		height: 10px;
+		width: 78%;
+		margin-bottom: 6px;
+	}
+
+	.line--h1.short {
+		width: 55%;
+		margin-bottom: 10px;
+	}
+
+	.line--text {
+		height: 5px;
+		width: 88%;
+		margin-bottom: 5px;
+		background: color-mix(in srgb, var(--color-tinte) 30%, transparent);
+	}
+
+	.line--text.short {
+		width: 62%;
+	}
+
+	.mini-cta {
+		margin-top: 10px;
+		width: 86px;
+		height: 16px;
+		border-radius: 999px;
+		background: var(--color-puls);
+	}
+
+	.mini-pulse {
+		width: 100%;
+		height: 22px;
+		margin: 14px 0;
+	}
+
+	.mini-pulse path {
+		stroke: var(--color-puls);
+		stroke-width: 1.6;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.mini-cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 8px;
+	}
+
+	.mini-cards div {
+		height: 44px;
+		border-radius: 7px;
+		background: var(--color-nebel);
+	}
+
+	.mini-footer {
+		margin-top: 14px;
+		height: 30px;
+		border-radius: 7px 7px 0 0;
+		background: var(--color-tinte);
+	}
+</style>

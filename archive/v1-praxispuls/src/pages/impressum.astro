@@ -1,0 +1,75 @@
+---
+// TODO before launch: replace every [PLATZHALTER] block below with the final,
+// legally reviewed Impressum content. Do not publish with placeholders live.
+import Base from "../layouts/Base.astro";
+import Section from "../components/Section.astro";
+import Footer from "../components/Footer.astro";
+import Logo from "../components/Logo.astro";
+---
+
+<Base title="Impressum — Praxispuls" description="Impressum von Praxispuls, Praxismarketing aus Essen." path="/impressum/">
+	<header class="mx-auto flex max-w-content items-center px-6 py-6">
+		<Logo />
+	</header>
+
+	<main id="main">
+		<Section>
+			<h1 class="font-display text-4xl">Impressum</h1>
+
+			<div class="mt-10 max-w-prose space-y-8 text-tinte/85">
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">Angaben gemäß § 5 TMG</h2>
+					<p class="mt-2">
+						[PLATZHALTER: Vollständiger Name]<br />
+						[PLATZHALTER: Straße und Hausnummer]<br />
+						[PLATZHALTER: PLZ und Ort]
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">Kontakt</h2>
+					<p class="mt-2">
+						Telefon: [PLATZHALTER: Telefonnummer]<br />
+						E-Mail: <a href="mailto:kontakt@praxispuls.de" class="hover:text-puls">kontakt@praxispuls.de</a>
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">Umsatzsteuer</h2>
+					<p class="mt-2">
+						Gemäß § 19 UStG (Kleinunternehmerregelung) wird keine Umsatzsteuer ausgewiesen.
+						[PLATZHALTER: Falls nicht zutreffend, USt-IdNr. gemäß § 27a UStG ergänzen.]
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+					<p class="mt-2">
+						[PLATZHALTER: Name, Anschrift wie oben]
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">Streitschlichtung</h2>
+					<p class="mt-2">
+						Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS)
+						bereit: <a href="https://ec.europa.eu/consumers/odr/" class="hover:text-puls" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.
+						Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer
+						Verbraucherschlichtungsstelle teilzunehmen.
+					</p>
+				</section>
+
+				<section>
+					<h2 class="font-mono text-sm tracking-wide text-tinte/70 uppercase">Haftung für Inhalte</h2>
+					<p class="mt-2">
+						Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen
+						Seiten nach den allgemeinen Gesetzen verantwortlich. Eine Verpflichtung zur
+						Überwachung übermittelter oder gespeicherter fremder Informationen besteht nicht.
+					</p>
+				</section>
+			</div>
+		</Section>
+	</main>
+
+	<Footer />
+</Base>

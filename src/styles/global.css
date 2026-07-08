@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+/* Self-hosted fonts (woff2 only, latin subset — covers German incl. äöüß). */
+@font-face {
+	font-family: "Figtree Variable";
+	font-style: normal;
+	font-weight: 300 900;
+	font-display: swap;
+	src: url("/fonts/figtree-variable.woff2") format("woff2-variations");
+}
+
+@font-face {
+	font-family: "Instrument Serif";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/instrument-serif-400.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Instrument Serif";
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/instrument-serif-400-italic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "IBM Plex Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/ibm-plex-mono-400.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "IBM Plex Mono";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2");
+}
+
+@theme {
+	/* Umkreis brand tokens - bright editorial, warm and approachable. */
+	--color-nacht: #fbf7ef; /* page ground, warm light */
+	--color-kohle: #ffffff; /* raised surfaces */
+	--color-kreide: #243229; /* primary ink */
+	--color-gold: #c86f4a; /* the one signal color: CTAs, motion, key numbers */
+
+	--font-display: "Instrument Serif", serif;
+	--font-body: "Figtree Variable", system-ui, sans-serif;
+	--font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+	--container-content: 1200px;
+}
+
+@layer base {
+	html {
+		background: var(--color-nacht);
+		color: var(--color-kreide);
+		font-family: var(--font-body);
+		line-height: 1.65;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		font-family: var(--font-body);
+		overflow-x: clip;
+		background:
+			linear-gradient(90deg, rgba(36, 50, 41, 0.035) 1px, transparent 1px),
+			linear-gradient(rgba(36, 50, 41, 0.03) 1px, transparent 1px),
+			radial-gradient(circle at 18% 12%, rgba(200, 111, 74, 0.13), transparent 32rem),
+			radial-gradient(circle at 86% 18%, rgba(127, 161, 133, 0.16), transparent 30rem),
+			var(--color-nacht);
+		background-size: 96px 96px, 96px 96px, auto, auto, auto;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-gold);
+		outline-offset: 3px;
+	}
+
+	::selection {
+		background: var(--color-gold);
+		color: var(--color-nacht);
+	}
+}
+
+@layer components {
+	/* Fine paper texture for the light editorial surface. */
+	.grain {
+		position: fixed;
+		inset: 0;
+		z-index: 60;
+		pointer-events: none;
+		opacity: 0.035;
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	}
+
+	/* Hairline borders used everywhere: barely-there luxury. */
+	.hairline {
+		border-color: color-mix(in srgb, var(--color-kreide) 11%, transparent);
+	}
+
+	/* Infinite marquee (verticals strip under the hero). */
+	.marquee {
+		overflow: hidden;
+		-webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+		mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+	}
+
+	.marquee__track {
+		display: flex;
+		gap: 0;
+		width: max-content;
+		animation: marquee 30s linear infinite;
+	}
+
+	/* Swipeable card tracks: hide the native scrollbar, app-like. */
+	[data-hscroll-track] {
+		scrollbar-width: none;
+	}
+
+	[data-hscroll-track]::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Big outline wordmark in the footer. */
+	.wordmark {
+		color: transparent;
+		-webkit-text-stroke: 1px color-mix(in srgb, var(--color-kreide) 30%, transparent);
+	}
+}
+
+html.gsap .statement-line {
+	opacity: 0;
+	transform: translateY(2.5rem);
+	filter: blur(10px);
+}
+
+html.gsap .statement-line em {
+	color: var(--color-gold);
+}
+
+/* Mobile sticky CTA: hidden until app.js switches it on after the hero. */
+[data-mobile-cta] {
+	transform: translateY(150%);
+	transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-mobile-cta].is-on {
+	transform: none;
+}
+
+@keyframes marquee {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes radar-sweep {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes radar-ping {
+	0% {
+		transform: scale(0.6);
+		opacity: 0;
+	}
+	20% {
+		opacity: 1;
+	}
+	70%,
+	100% {
+		transform: scale(2.4);
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.marquee__track {
+		animation: none;
+	}
+}

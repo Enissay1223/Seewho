@@ -1,0 +1,87 @@
+---
+/**
+ * The EKG line: brand signature. Paths are hand-tuned per variant/orientation,
+ * not generated at runtime, so there is zero layout cost and no JS dependency
+ * to just render the shape. Animation (scroll-draw or reveal-on-enter) is
+ * layered on top by ekg-scroll.js via the data-ekg-line hook.
+ */
+interface Props {
+	/** "journey": flatline -> heartbeat -> rising curve, in one path. "growth": smooth rising curve only. "flat": static horizontal line only. */
+	variant?: "journey" | "growth" | "flat";
+	orientation?: "horizontal" | "vertical";
+	/** Glow the stroke in --puls (used on the dark Referenzen section). */
+	glow?: boolean;
+	/** Hook for ekg-scroll.js: "scroll" tracks scroll progress continuously (tall vertical spines), "reveal" draws in once on viewport enter, omit for a static decorative line. */
+	animate?: "scroll" | "reveal";
+	class?: string;
+}
+
+const { variant = "journey", orientation = "horizontal", glow = false, animate, class: className = "" } = Astro.props;
+
+const paths: Record<string, { viewBox: string; d: string }> = {
+	"horizontal:journey": {
+		viewBox: "0 0 400 100",
+		d: "M0,58 H150 L160,26 L171,88 L182,10 L193,58 H230 C270,58 272,32 310,30 C345,28 360,12 400,6",
+	},
+	"horizontal:growth": {
+		viewBox: "0 0 400 100",
+		d: "M0,82 C70,80 110,64 150,58 C210,50 240,22 400,8",
+	},
+	"horizontal:flat": {
+		viewBox: "0 0 400 100",
+		d: "M0,50 H400",
+	},
+	"vertical:journey": {
+		viewBox: "0 0 40 640",
+		d: "M20,0 V210 L12,232 L28,244 L12,256 L20,278 V420 C20,452 33,446 33,486 C33,528 7,534 7,576 V640",
+	},
+	"vertical:growth": {
+		viewBox: "0 0 40 640",
+		d: "M20,640 C20,540 6,500 6,440 C6,380 33,360 33,280 C33,200 12,140 20,0",
+	},
+	"vertical:flat": {
+		viewBox: "0 0 40 640",
+		d: "M20,0 V640",
+	},
+};
+
+const key = `${orientation}:${variant}`;
+const { viewBox, d } = paths[key] ?? paths["horizontal:journey"];
+---
+
+<svg
+	class={`pulse-line ${glow ? "pulse-line--glow" : ""} ${className}`}
+	viewBox={viewBox}
+	preserveAspectRatio="none"
+	fill="none"
+	aria-hidden="true"
+	data-ekg-line={animate}
+>
+	<path d={d} vector-effect="non-scaling-stroke" />
+</svg>
+
+<style>
+	.pulse-line {
+		width: 100%;
+		height: 100%;
+		display: block;
+		overflow: visible;
+	}
+
+	.pulse-line path {
+		stroke: var(--color-puls);
+		stroke-width: 2.5;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.pulse-line--glow path {
+		filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-puls) 70%, transparent));
+	}
+
+	/* Scroll-draw scripts set these two custom properties per element. Default: fully drawn, so no-JS / reduced-motion always shows a complete line. */
+	.pulse-line path {
+		stroke-dasharray: var(--ekg-length, none);
+		stroke-dashoffset: var(--ekg-offset, 0);
+	}
+</style>

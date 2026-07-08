@@ -1,0 +1,65 @@
+---
+interface Props {
+	/** Display name, e.g. "Sichtbar". Tab shows it upper-cased. */
+	title: string;
+	price: string;
+	priceNote?: string;
+	recommended?: boolean;
+	/** Small rotation in degrees, applied from md breakpoint only. */
+	rotate?: number;
+}
+
+const { title, price, priceNote, recommended = false, rotate = 0 } = Astro.props;
+---
+
+<div
+	class:list={["karteikarte relative rounded-[18px] bg-akte p-8 pt-10 shadow-[0_16px_36px_-14px_rgba(10,42,46,0.25)]", recommended && "ring-2 ring-puls"]}
+	style={`--rotate: ${rotate}deg;`}
+>
+	<!-- Karteikarte tab -->
+	<div
+		class:list={[
+			"absolute -top-4 left-8 rounded-t-lg px-4 py-1.5 font-mono text-xs tracking-wide uppercase",
+			recommended ? "bg-puls text-tinte" : "bg-tinte/90 text-papier",
+		]}
+	>
+		{recommended ? "Empfohlen" : title}
+	</div>
+
+	{recommended && <p class="font-mono text-xs font-semibold tracking-wide text-tinte uppercase">{title}</p>}
+
+	<h3 class="mt-2 font-display text-3xl">{title}</h3>
+
+	<div class="mt-6">
+		<p class="font-mono text-2xl text-tinte">{price}</p>
+		{priceNote && <p class="mt-1 font-mono text-xs text-tinte/70">{priceNote}</p>}
+	</div>
+
+	<ul class="mt-6 space-y-3 text-[15px] text-tinte/85">
+		<slot />
+	</ul>
+</div>
+
+<style>
+	@media (min-width: 768px) {
+		.karteikarte {
+			transform: rotate(var(--rotate, 0deg));
+		}
+	}
+
+	:global(.karteikarte li) {
+		position: relative;
+		padding-left: 1.1rem;
+	}
+
+	:global(.karteikarte li::before) {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0.55em;
+		width: 6px;
+		height: 6px;
+		border-radius: 999px;
+		background: var(--color-puls);
+	}
+</style>

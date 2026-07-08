@@ -1,0 +1,257 @@
+---
+const frames = [
+	{
+		label: "Launch",
+		title: "Neue Seite live",
+		meta: "Performance 96",
+		className: "media-frame--web",
+	},
+	{
+		label: "Reputation",
+		title: "Bewertung eingegangen",
+		meta: "4,8 Sterne",
+		className: "media-frame--review",
+	},
+	{
+		label: "Content",
+		title: "Kampagne bereit",
+		meta: "12 Assets",
+		className: "media-frame--content",
+	},
+];
+---
+
+<div class="media-wall" data-media-wall aria-label="Bewegte Vorschau von Webseite, Bewertungen und Kampagnen">
+	<div class="media-wall__backdrop" aria-hidden="true"></div>
+
+	<div class="media-wall__reel" aria-hidden="true">
+		<span>Website</span>
+		<span>Google</span>
+		<span>Bewertungen</span>
+		<span>Automatisierung</span>
+		<span>Content</span>
+		<span>Website</span>
+		<span>Google</span>
+		<span>Bewertungen</span>
+	</div>
+
+	<div class="media-wall__grid">
+		{
+			frames.map((frame, index) => (
+				<article class={`media-frame ${frame.className}`} style={`--i: ${index}`}>
+					<div class="media-frame__image">
+						<div class="media-frame__motion"></div>
+					</div>
+					<div class="media-frame__body">
+						<p>{frame.label}</p>
+						<h2>{frame.title}</h2>
+						<span>{frame.meta}</span>
+					</div>
+				</article>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.media-wall {
+		position: relative;
+		min-height: 560px;
+		isolation: isolate;
+	}
+
+	.media-wall__backdrop {
+		position: absolute;
+		inset: 6% 4% 0;
+		border-radius: 44px;
+		background:
+			linear-gradient(135deg, color-mix(in srgb, var(--color-gold) 20%, transparent), transparent 45%),
+			linear-gradient(315deg, color-mix(in srgb, #7fa185 22%, transparent), transparent 48%),
+			color-mix(in srgb, var(--color-kohle) 72%, var(--color-nacht));
+		box-shadow: 0 42px 90px -50px rgba(65, 49, 35, 0.4);
+		z-index: -1;
+	}
+
+	.media-wall__reel {
+		position: absolute;
+		top: 58px;
+		left: 11%;
+		right: 8%;
+		display: flex;
+		gap: 18px;
+		overflow: hidden;
+		mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+		-webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+	}
+
+	.media-wall__reel span {
+		flex: 0 0 auto;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.72);
+		border: 1px solid rgba(36, 50, 41, 0.08);
+		color: color-mix(in srgb, var(--color-kreide) 68%, transparent);
+		font-family: var(--font-mono);
+		font-size: 10px;
+		letter-spacing: 0.18em;
+		padding: 8px 12px;
+		text-transform: uppercase;
+		animation: reel-slide 18s linear infinite;
+	}
+
+	.media-wall__grid {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 0.74fr;
+		grid-template-rows: 1fr 1fr;
+		gap: 18px;
+		padding: 110px 30px 34px;
+	}
+
+	.media-frame {
+		overflow: hidden;
+		border-radius: 30px;
+		border: 1px solid rgba(36, 50, 41, 0.08);
+		background: rgba(255, 255, 255, 0.86);
+		box-shadow: 0 24px 70px -48px rgba(65, 49, 35, 0.55);
+		transform: translateY(calc(var(--i) * 10px));
+		animation: media-float 7s ease-in-out infinite;
+		animation-delay: calc(var(--i) * -1.3s);
+	}
+
+	.media-frame:first-child {
+		grid-row: span 2;
+	}
+
+	.media-frame__image {
+		position: relative;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		background: var(--color-nacht);
+	}
+
+	.media-frame:first-child .media-frame__image {
+		aspect-ratio: 4 / 4.7;
+	}
+
+	.media-frame__motion {
+		position: absolute;
+		inset: -22%;
+		background-size: 140px 140px, 100% 100%;
+		animation: image-pan 13s ease-in-out infinite alternate;
+		will-change: transform;
+	}
+
+	.media-frame--web .media-frame__motion {
+		background:
+			linear-gradient(90deg, rgba(255, 255, 255, 0.42) 1px, transparent 1px),
+			linear-gradient(rgba(255, 255, 255, 0.38) 1px, transparent 1px),
+			radial-gradient(circle at 35% 28%, #f3c9a4 0 12%, transparent 34%),
+			radial-gradient(circle at 70% 66%, #8fab91 0 13%, transparent 35%),
+			linear-gradient(135deg, #f8efe3, #d9ece1 55%, #f7d6bd);
+	}
+
+	.media-frame--review .media-frame__motion {
+		background:
+			linear-gradient(120deg, transparent 0 28%, rgba(255, 255, 255, 0.78) 28% 38%, transparent 38% 100%),
+			radial-gradient(circle at 26% 30%, #c86f4a 0 10%, transparent 30%),
+			radial-gradient(circle at 76% 62%, #f2c777 0 12%, transparent 34%),
+			linear-gradient(135deg, #fff8ee, #dfeee6);
+	}
+
+	.media-frame--content .media-frame__motion {
+		background:
+			linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0 22%, transparent 22% 100%),
+			radial-gradient(circle at 20% 74%, #7fa185 0 11%, transparent 31%),
+			radial-gradient(circle at 72% 24%, #e9ae78 0 14%, transparent 34%),
+			linear-gradient(135deg, #fdf4e8, #e8f0df);
+	}
+
+	.media-frame__body {
+		padding: 17px 18px 18px;
+	}
+
+	.media-frame__body p,
+	.media-frame__body span {
+		font-family: var(--font-mono);
+		font-size: 10px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-kreide) 58%, transparent);
+	}
+
+	.media-frame__body h2 {
+		margin-top: 6px;
+		font-family: var(--font-body);
+		font-size: 18px;
+		font-weight: 650;
+		letter-spacing: 0;
+		line-height: 1.15;
+		color: var(--color-kreide);
+	}
+
+	.media-frame__body span {
+		display: block;
+		margin-top: 12px;
+		color: var(--color-gold);
+	}
+
+	@keyframes media-float {
+		0%,
+		100% {
+			transform: translateY(calc(var(--i) * 10px));
+		}
+
+		50% {
+			transform: translateY(calc(var(--i) * 10px - 12px));
+		}
+	}
+
+	@keyframes image-pan {
+		from {
+			transform: translate3d(-4%, -3%, 0) scale(1.04);
+		}
+
+		to {
+			transform: translate3d(5%, 4%, 0) scale(1.1);
+		}
+	}
+
+	@keyframes reel-slide {
+		to {
+			transform: translateX(-230px);
+		}
+	}
+
+	@media (max-width: 767px) {
+		.media-wall {
+			min-height: auto;
+		}
+
+		.media-wall__backdrop {
+			inset: 5% 0 0;
+			border-radius: 30px;
+		}
+
+		.media-wall__grid {
+			grid-template-columns: 1fr;
+			padding: 92px 18px 22px;
+		}
+
+		.media-frame:first-child {
+			grid-row: auto;
+		}
+
+		.media-frame:first-child .media-frame__image,
+		.media-frame__image {
+			aspect-ratio: 16 / 10;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.media-frame,
+		.media-frame__motion,
+		.media-wall__reel span {
+			animation: none;
+		}
+	}
+</style>

@@ -1,0 +1,20 @@
+---
+interface Props {
+	label: string;
+	value: string;
+	reference: string;
+	verdict: string;
+}
+
+const { label, value, reference, verdict } = Astro.props;
+---
+
+<div class="relative overflow-hidden rounded-2xl bg-papier p-6 shadow-[0_10px_30px_-12px_rgba(10,42,46,0.18)]">
+	<span class="absolute inset-x-0 top-0 h-1 bg-puls" aria-hidden="true"></span>
+	<p class="font-mono text-xs tracking-wide text-tinte/70 uppercase">{label}</p>
+	<p class="mt-3 font-mono text-4xl text-tinte">{value}</p>
+	<p class="mt-3 font-mono text-xs text-tinte/70">Referenz: {reference}</p>
+	<p class="blink-soft mt-4 inline-block rounded-full border border-tinte/20 px-3 py-1 font-mono text-xs tracking-wide text-tinte uppercase">
+		→ {verdict}
+	</p>
+</div>
